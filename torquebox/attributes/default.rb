@@ -15,5 +15,7 @@ default[:torquebox][:clustered] = false
 default[:torquebox][:peers] = []
 # List of mod_cluster load balancers for this cluster
 default[:torquebox][:mod_cluster_proxies] = []
+# Port mod_cluster proxies listen for management messages
+default[:torquebox][:mod_cluster_mcpm_port] = 6666
 
 default[:torquebox][:run_state] = :start

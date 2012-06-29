@@ -1,0 +1,26 @@
+<IfModule manager_module>
+  Listen <%= node[:mod_cluster][:mcpm_bind_ip] %>:<%= node[:mod_cluster][:mcpm_port] %>
+  ManagerBalancerName <%= node[:mod_cluster][:balancer_name] %>
+  MemManagerFile <%= node[:mod_cluster][:mod_cluster_dir] %>
+
+  <VirtualHost <%= node[:mod_cluster][:mcpm_bind_ip] %>:<%= node[:mod_cluster][:mcpm_port] %>>
+    <Location />
+     Order deny,allow
+     Deny from all
+     Allow from all
+    </Location>
+
+    EnableMCPMReceive
+    KeepAliveTimeout 300
+    MaxKeepAliveRequests 0
+
+    <Location /mod_cluster_manager>
+       SetHandler mod_cluster-manager
+       Order deny,allow
+       Deny from all
+       Allow from 127.0.0
+       AllowDisplay On
+    </Location>
+
+  </VirtualHost>
+</IfModule>
