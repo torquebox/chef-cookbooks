@@ -1,0 +1,3 @@
+Defaults    env_keep += "PATH JRUBY_OPTS JRUBY_HOME JBOSS_HOME TORQUEBOX_HOME"
+Defaults    secure_path= /opt/torquebox-current/jruby/bin:/sbin:/bin:/usr/sbin:/usr/bin
+# This file needs to have a blank line at the end or sudoers won't work.
