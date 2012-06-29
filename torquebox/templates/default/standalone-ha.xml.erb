@@ -474,7 +474,7 @@
             </hornetq-server>
         </subsystem>
         <subsystem xmlns='urn:jboss:domain:modcluster:1.0'>
-            <mod-cluster-config <%- unless proxy_list.empty? %>proxy-list='<%= proxy_list.map{ |p| "#{p}:@options[:mod_cluster_mcpm_port]"}.join(',') %>'<% end %> excluded-contexts='invoker,jbossws,juddi,console'>
+            <mod-cluster-config <%- unless proxy_list.empty? %>proxy-list='<%= proxy_list.map{ |p| "#{p}:#{@options[:mod_cluster_mcpm_port]}"}.join(',') %>'<% end %> excluded-contexts='invoker,jbossws,juddi,console'>
                 <dynamic-load-provider>
                     <load-metric type='busyness'/>
                 </dynamic-load-provider>
