@@ -51,3 +51,5 @@ apache_module "slotmem"
 apache_module "manager" do
   conf true
 end
+
+announce(:mod_cluster, :server)
