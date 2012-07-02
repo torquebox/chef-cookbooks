@@ -1,10 +1,10 @@
 <IfModule manager_module>
   Listen 127.0.0.1:<%= node[:mod_cluster][:mcpm_port] %>
-  Listen <%= node[:mod_cluster][:mcpm_bind_ip] %>:<%= node[:mod_cluster][:mcpm_port] %>
+  Listen <%= node[:mod_cluster][:bind_ip_resolved] %>:<%= node[:mod_cluster][:mcpm_port] %>
   ManagerBalancerName <%= node[:mod_cluster][:balancer_name] %>
   MemManagerFile <%= node[:mod_cluster][:mod_cluster_dir] %>
 
-  <VirtualHost <%= node[:mod_cluster][:mcpm_bind_ip] %>:<%= node[:mod_cluster][:mcpm_port] %>>
+  <VirtualHost <%= node[:mod_cluster][:mcpm_bind_ip_resolved] %>:<%= node[:mod_cluster][:mcpm_port] %>>
     <Location />
      Order deny,allow
      Deny from all

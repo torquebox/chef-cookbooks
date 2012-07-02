@@ -7,4 +7,4 @@ chpst -u torquebox %> bash -c 'ulimit -S -a'
 
 export LAUNCH_JBOSS_IN_BACKGROUND="true"
 
-exec chpst -u torquebox <%= @options[:torquebox_dir] %>/jboss/bin/standalone.sh -b <%= @options[:bind_ip] %> --server-config <%= @options[:server_config] %> 2>&1
+exec chpst -u torquebox <%= @options[:torquebox_dir] %>/jboss/bin/standalone.sh -b <%= @options[:bind_ip_resolved] %> --server-config <%= @options[:server_config] %> 2>&1
