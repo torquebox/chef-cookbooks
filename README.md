@@ -22,6 +22,6 @@ New TorqueBox (torquebox-backend) servers can be added at any time and
 will join the cluster as expected. However, when a new mod_cluster
 (torquebox-frontend) cluster is added the existing TorqueBox servers
 won't automatically connect to it. You'll need to re-run chef-client
-on the TorqueBox servers then restart TorqueBox (`sv torquebox
-restart`) to get the backend servers talking to the new mod_cluster
+on the TorqueBox servers then restart TorqueBox (`sv restart torquebox`)
+to get the backend servers talking to the new mod_cluster
 instance.
