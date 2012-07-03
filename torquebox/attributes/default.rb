@@ -10,6 +10,7 @@ default[:torquebox][:torquebox_dir] = "/opt/torquebox-current"
 default[:torquebox][:log_dir] = "/var/log/torquebox"
 default[:torquebox][:bind_ip] = "127.0.0.1"
 default[:torquebox][:server_config] = "standalone.xml"
+default[:torquebpx][:ha_server_config_template] = "standalone-ha.xml.erb"
 default[:torquebox][:clustered] = false
 # List of peers in this TorqueBox cluster
 default[:torquebox][:peers] = []

@@ -57,7 +57,7 @@ end
 
 template "#{current}/jboss/standalone/configuration/standalone-ha.xml" do
   variables({ :options => node[:torquebox] })
-  source "standalone-ha.xml.erb"
+  source node[:torquebox][:ha_server_config_template]
   owner "torquebox"
   group "torquebox"
   mode "0644"
