@@ -41,18 +41,18 @@ end
 
 # Allow bind_ip entries like ["cloud", "local_ipv4"]
 if node[:torquebox][:bind_ip].is_a?(Array)
-  node[:torquebox][:bind_ip_resolved] = node[:torquebox][:bind_ip].inject(node) do |hash, key|
+  node.set[:torquebox][:bind_ip_resolved] = node[:torquebox][:bind_ip].inject(node) do |hash, key|
     hash[key]
   end
 else
-  node[:torquebox][:bind_ip_resolved] = node[:torquebox][:bind_ip]
+  node.set[:torquebox][:bind_ip_resolved] = node[:torquebox][:bind_ip]
 end
 
 if clustered
-  node[:torquebox][:peers] = discover_all(:torquebox, :server).map(&:private_ip)
-  node[:torquebox][:peers].delete(node[:private_ip])
-  node[:torquebox][:mod_cluster_proxies] = discover_all(:mod_cluster, :server).map(&:private_ip)
-  node[:torquebox][:server_config] = "standalone-ha.xml"
+  node.set[:torquebox][:peers] = discover_all(:torquebox, :server).map(&:private_ip)
+  node.set[:torquebox][:peers].delete(node[:private_ip])
+  node.set[:torquebox][:mod_cluster_proxies] = discover_all(:mod_cluster, :server).map(&:private_ip)
+  node.set[:torquebox][:server_config] = "standalone-ha.xml"
 end
 
 template "#{current}/jboss/standalone/configuration/standalone-ha.xml" do
