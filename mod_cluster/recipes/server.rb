@@ -32,11 +32,11 @@ end
 
 # Allow bind_ip entries like ["cloud", "local_ipv4"]
 if node[:mod_cluster][:mcpm_bind_ip].is_a?(Array)
-  node[:mod_cluster][:mcpm_bind_ip_resolved] = node[:mod_cluster][:mcpm_bind_ip].inject(node) do |hash, key|
+  node.set[:mod_cluster][:mcpm_bind_ip_resolved] = node[:mod_cluster][:mcpm_bind_ip].inject(node) do |hash, key|
     hash[key]
   end
 else
-  node[:mod_cluster][:mcpm_bind_ip_resolved] = node[:mod_cluster][:mcpm_bind_ip]
+  node.set[:mod_cluster][:mcpm_bind_ip_resolved] = node[:mod_cluster][:mcpm_bind_ip]
 end
 
 [ "slotmem", "proxy_cluster", "manager"].each do |mod|
