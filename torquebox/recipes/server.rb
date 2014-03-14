@@ -82,8 +82,10 @@ end
 announce(:torquebox, :server)
 
 # otherwise bundler won't work in jruby
-gem_package 'jruby-openssl' do
-  gem_binary "#{current}/jruby/bin/jgem"
+execute "install jruby-openssl" do
+  command "#{current}/jruby/bin/jgem install jruby-openssl -q --no-document"
+  user "torquebox"
+  returns [0, '0', '', nil]
 end
 
 #allows use of 'torquebox' command through sudo
