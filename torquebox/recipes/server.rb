@@ -86,6 +86,7 @@ execute "install jruby-openssl" do
   command "#{current}/jruby/bin/jgem install jruby-openssl -q --no-document"
   user "torquebox"
   returns [0, '0', '', nil]
+  not_if "#{current}/jruby/bin/jgem list jruby-openssl -i"
 end
 
 #allows use of 'torquebox' command through sudo
